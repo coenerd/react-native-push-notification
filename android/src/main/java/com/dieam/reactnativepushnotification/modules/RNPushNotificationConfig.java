@@ -32,7 +32,11 @@ class RNPushNotificationConfig {
 
     public String getChannelName() {
         try {
-            return metadata.getString(KEY_CHANNEL_NAME);
+            String channelName = metadata.getString(KEY_CHANNEL_NAME);
+            if (channelName != null) {
+                return channelName;
+            }
+            Log.w(RNPushNotification.LOG_TAG, "Unable to find " + KEY_CHANNEL_NAME + " in manifest. Falling back to default");
         } catch (Exception e) {
             Log.w(RNPushNotification.LOG_TAG, "Unable to find " + KEY_CHANNEL_NAME + " in manifest. Falling back to default");
         }
@@ -41,7 +45,11 @@ class RNPushNotificationConfig {
     }
     public String getChannelDescription() {
         try {
-            return metadata.getString(KEY_CHANNEL_DESCRIPTION);
+            String channelDescription = metadata.getString(KEY_CHANNEL_DESCRIPTION);
+            if (channelDescription != null) {
+                return channelDescription;
+            }
+            Log.w(RNPushNotification.LOG_TAG, "Unable to find " + KEY_CHANNEL_DESCRIPTION + " in manifest. Falling back to default");
         } catch (Exception e) {
             Log.w(RNPushNotification.LOG_TAG, "Unable to find " + KEY_CHANNEL_DESCRIPTION + " in manifest. Falling back to default");
         }
