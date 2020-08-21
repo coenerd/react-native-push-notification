@@ -52,7 +52,7 @@ public class RNPushNotificationListenerService extends FirebaseMessagingService 
 
         if (data != null) {
             if (!bundle.containsKey("message")) {
-                bundle.putString("message", data.optString("alert", null));
+                bundle.putString("message", data.optString("message", null));
             }
             if (!bundle.containsKey("title")) {
                 bundle.putString("title", data.optString("title", null));
